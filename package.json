@@ -1,0 +1,11 @@
+{
+  "name": "secure-express",
+  "version": "0.0.0",
+  "dependencies": {
+    "inspc": "^0.0.13",
+    "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11"
+  },
+  "license": "MIT",
+  "author": "Szymon Działowski"
+}

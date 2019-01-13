@@ -1,0 +1,6 @@
+/config.js
+/.env
+yarn.lock
+*.tgz
+/server.js
+node_modules
