@@ -4,3 +4,4 @@ yarn.lock
 *.tgz
 /server.js
 node_modules
+/.idea/
