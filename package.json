@@ -7,5 +7,6 @@
     "lodash": "^4.17.11"
   },
   "license": "MIT",
-  "author": "Szymon Działowski"
+  "author": "Szymon Działowski",
+  "homepage": "https://github.com/stopsopa/secure-express"
 }
