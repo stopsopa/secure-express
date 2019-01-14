@@ -163,7 +163,7 @@ if [ "$DIFF" != "" ] || [ "$1" = "force" ]; then
 
         #make h
 
-        git push origin master --tags
+        git push $ORIGIN $REMOTEBRANCH master --tags
 
 #        git push heroku master
 
