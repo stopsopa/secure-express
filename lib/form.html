@@ -6,19 +6,121 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&amp;subset=latin-ext" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .login {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px #c7c7c7;
+            padding: 23px;
+        }
+        .login div {
+            text-align: left;
+            position: relative;
+            padding-left: 30px;
+            color: #d50000;
+            line-height: 32px;
+        }
+        .login div span {
+            position: absolute;
+            background-color: #d50000;
+            width: 15px;
+            height: 15px;
+            left: 5px;
+            top: 8px;
+            border-radius: 45px;
+        }
+        .login div span::before {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 6px;
+            left: 7px;
+            top: 3px;
+            background-color: white;
+        }
+        .login div span::after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            left: 7px;
+            top: 11px;
+            background-color: white;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            line-height: 20px;
+            border-radius: 4px;
+            /*height: 28px;*/
+            margin: 1px 1px 0 1px;
+            border: 1px solid #d2d2d2;
+            padding: 12px 15px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+        input[type="text"].error,
+        input[type="password"].error {
+            border-color: #d50000;
+            border-width: 2px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            line-height: 20px;
+            border-radius: 4px;
+            /*height: 28px;*/
+            margin: 1px 1px 0 1px;
+            border: none;
+            padding: 12px 15px;
+            font-size: 15px;
+            box-sizing: border-box;
+            background-color: #518AC5;
+            color: white;
+            box-shadow: 0 0 0 #518AC5;
+            transition: box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            box-shadow: 0 0 4px #518AC5;
+        }
+    </style>
 </head>
 <body>
-    <form method="post" enctype="application/x-www-form-urlencoded">
-        <input type="text" name="username" />
-        <% if (d.username) { %><div><%= d.username %></div><% } %>
-        <br />
-        <input type="password" name="password" />
-        <% if (d.password) { %><div><%= d.password %></div><% } %>
-        <br />
-        <input type="hidden" name="auth-hidden-field" value="auth-hidden-value">
-        <% if (d.general) { %><div><%= d.general %></div><% } %>
-        <br />
-        <input type="submit" value="submit" />
-    </form>
+    <div class="login">
+        <svg width="180" height="92" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 400">
+            <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+            <g>
+                <title>background</title>
+                <!--<rect fill="#f9f9f9" id="canvas_background" height="402" width="582" y="-1" x="-1"/>-->
+            </g>
+            <g>
+                <title>Layer 1</title>
+                <ellipse stroke="#ffffff" ry="197.000004" rx="195.499995" id="svg_1" cy="200.000005" cx="289.999994" stroke-width="1.5" fill="#a0bdf2"/>
+                <ellipse stroke="null" ry="75.999997" rx="75.500003" id="svg_3" cy="140.437497" cx="290.000003" stroke-width="1.5" fill="#4a75d9"/>
+                <ellipse stroke="null" ry="51.999999" rx="116" id="svg_4" cy="286.437501" cx="290" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="#4a75d9"/>
+                <path id="svg_12" d="m174.234012,286.723686l1.249877,71.493427l6.249426,4.999541l8.999174,5.749472l9.499128,4.999541l11.998898,5.749472l10.499036,4.499587l10.749013,3.499679l11.248967,3.249702l11.498944,2.249793l12.74883,1.999816l13.248784,0.749931l13.998715,0l14.248692,-0.749931l14.498669,-1.999816l14.248692,-3.249702l11.248967,-3.249702l13.748738,-5.249518l13.248784,-5.999449l12.498853,-6.999357l10.499036,-6.74938l5.999449,-4.499587l-0.249977,-71.493436" stroke-width="1.5" fill="#4a75d9"/>
+            </g>
+        </svg>
+        <form method="post" enctype="application/x-www-form-urlencoded">
+            <input type="text" name="username" placeholder="Username" <% if (d.username) { %> class="error"<% } %> />
+            <% if (d.username) { %><div><span></span><%= d.username %></div><% } %>
+            <input type="password" name="password" placeholder="Password" <% if (d.password) { %> class="error"<% } %> />
+            <% if (d.password) { %><div><span></span><%= d.password %></div><% } %>
+            <input type="hidden" name="auth-hidden-field" value="auth-hidden-value">
+            <% if (d.general) { %><div><span></span><%= d.general %></div><% } %>
+            <input type="submit" value="Sign in" />
+        </form>
+    </div>
 </body>
 </html>

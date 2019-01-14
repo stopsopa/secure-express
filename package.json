@@ -8,5 +8,11 @@
   },
   "license": "MIT",
   "author": "Szymon Działowski",
-  "homepage": "https://github.com/stopsopa/secure-express"
+  "homepage": "https://github.com/stopsopa/secure-express",
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv-up": "^1.0.26",
+    "express": "^4.16.4",
+    "nlab": "^0.0.11"
+  }
 }
