@@ -1,6 +1,0 @@
-yarn.lock
-/.env
-*.tgz
-/server.js
-node_modules
-/.idea/

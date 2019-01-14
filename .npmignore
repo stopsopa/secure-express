@@ -1,0 +1,13 @@
+yarn.lock
+/.env
+*.tgz
+/server.js
+node_modules
+/.idea/
+/img/person.svg
+update-badge.js
+update.sh
+/test.sh
+/Makefile
+/LICENSE
+/.installgnore
