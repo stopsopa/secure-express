@@ -11,6 +11,8 @@ const express       = require('express');
 
 const app           = express();
 
+app.use(express.static(path.resolve(__dirname, 'public')));
+
 app.use(require('nlab/express/console-logger'));
 
 const secret        = "super_secret_password_to_encrypt_jwt";
