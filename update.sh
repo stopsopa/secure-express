@@ -167,6 +167,8 @@ if [ "$DIFF" != "" ] || [ "$1" = "force" ]; then
 
 #        git push heroku master
 
+        { green "\n\nSuccess\n"; } 2>&3
+
     else
 
         { red "\n\nCan't git push\n"; } 2>&3

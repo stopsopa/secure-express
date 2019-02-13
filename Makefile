@@ -9,5 +9,8 @@ t:
 nt: # test .npmignore
 	@npm pack
 
+dev:
+	nodemon -e js,html server.js
+
 
 
