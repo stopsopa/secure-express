@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
     // without this scripts on server wont be able to see values submitted from form
 }));
 
-const security = require('./lib/securityjwt');
+const security = require('secure-express/securityjwt');
 
 const middlewares = security({
     // debug: true,
