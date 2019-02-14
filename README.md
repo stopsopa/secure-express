@@ -15,8 +15,6 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.use(require('nlab/express/console-logger'));
 
-const secret        = "super_secret_password_to_encrypt_jwt";
-
 app.use(bodyParser.urlencoded({
     extended: true, // WARNING: required for secure-express
     // without this scripts on server wont be able to see values submitted from form
@@ -26,7 +24,8 @@ const security = require('secure-express/securityjwt');
 
 const middlewares = security({
     // debug: true,
-    secret,
+    secret: "super_secret_password_to_encrypt_jwt",
+    expire              : 60 * 60 * 9, // 9 hours
     userprovider: async (username, opt) => {
 
         const users = [
@@ -60,13 +59,19 @@ const middlewares = security({
 
 app.use(middlewares.secure);
 
-app.use('/signout', middlewares.signout);
+app.all('/signout'  , middlewares.signout);
+
+app.all('/refresh'  , middlewares.refresh);
+
+app.all('/diff'     , middlewares.diff);
+
+const content = fs.readFileSync(path.resolve(__dirname, 'public', 'secured.html')).toString();
 
 app.use((req, res) => {
 
     res.set('Content-type', 'text/html; charset=UTF-8');
 
-    res.end(`TOP SECRET <a href="/signout">sign out</a> <br /> url: ` + req.url)
+    res.end(content);
 });
 
 const port = process.env.NODE_BIND_PORT;
