@@ -1,6 +1,6 @@
 {
   "name": "secure-express",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "dependencies": {
     "inspc": "^0.0.13",
     "jsonwebtoken": "^8.4.0",
