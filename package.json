@@ -4,7 +4,8 @@
   "dependencies": {
     "inspc": "^0.0.13",
     "jsonwebtoken": "^8.4.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "md5": "^2.2.1"
   },
   "license": "MIT",
   "author": "Szymon Działowski",

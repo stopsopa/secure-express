@@ -24,7 +24,7 @@ const security = require('secure-express/securityjwt');
 
 const middlewares = security({
     // debug: true,
-    secret: "super_secret_password_to_encrypt_jwt",
+    secret: "super_secret_salt_to_encrypt_jwt",
     expire              : 60 * 60 * 9, // 9 hours
     userprovider: async (username, opt) => {
 
