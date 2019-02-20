@@ -32,14 +32,14 @@
         }
         .login {
             position: absolute;
-            top: 50%;
+            top: 46%;
             left: 50%;
             -webkit-transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             width: 400px;
-            background-color: #f9f9f9;
-            box-shadow: 0 2px 4px #c7c7c7;
+            /*background-color: #f9f9f9;*/
+            /*box-shadow: 0 2px 4px #c7c7c7;*/
             padding: 23px;
         }
         .login div {
@@ -80,7 +80,7 @@
         input[type="password"] {
             width: 100%;
             line-height: 20px;
-            border-radius: 4px;
+            border-radius: 2px;
             /*height: 28px;*/
             margin: 1px 1px 0 1px;
             border: 1px solid #d2d2d2;
@@ -96,16 +96,16 @@
         input[type="submit"] {
             width: 100%;
             line-height: 20px;
-            border-radius: 4px;
+            border-radius: 2px;
             /*height: 28px;*/
             margin: 1px 1px 0 1px;
             border: none;
             padding: 12px 15px;
             font-size: 15px;
             box-sizing: border-box;
-            background-color: #518AC5;
+            background-color: #afb0b1;
             color: white;
-            box-shadow: 0 0 0 #518AC5;
+            box-shadow: 0 0 0 #afb0b1;
             transition: box-shadow 0.3s ease-in-out;
             cursor: pointer;
         }
@@ -113,7 +113,7 @@
 
         }
         input[type="submit"]:hover {
-            box-shadow: 0 0 8px #518AC5;
+            box-shadow: 0 0 8px #bdbdbd;
         }
     </style>
 </head>
@@ -127,10 +127,10 @@
             </g>
             <g>
                 <title>Layer 1</title>
-                <ellipse stroke="#ffffff" ry="197.000004" rx="195.499995" id="svg_1" cy="200.000005" cx="289.999994" stroke-width="1.5" fill="#a0bdf2"/>
-                <ellipse stroke="null" ry="75.999997" rx="75.500003" id="svg_3" cy="140.437497" cx="290.000003" stroke-width="1.5" fill="#4a75d9"/>
-                <ellipse stroke="null" ry="51.999999" rx="116" id="svg_4" cy="286.437501" cx="290" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="#4a75d9"/>
-                <path id="svg_12" d="m174.234012,286.723686l1.249877,71.493427l6.249426,4.999541l8.999174,5.749472l9.499128,4.999541l11.998898,5.749472l10.499036,4.499587l10.749013,3.499679l11.248967,3.249702l11.498944,2.249793l12.74883,1.999816l13.248784,0.749931l13.998715,0l14.248692,-0.749931l14.498669,-1.999816l14.248692,-3.249702l11.248967,-3.249702l13.748738,-5.249518l13.248784,-5.999449l12.498853,-6.999357l10.499036,-6.74938l5.999449,-4.499587l-0.249977,-71.493436" stroke-width="1.5" fill="#4a75d9"/>
+                <ellipse stroke="#ffffff" ry="197.000004" rx="195.499995" id="svg_1" cy="200.000005" cx="289.999994" stroke-width="1.5" fill="#efefef"/>
+                <ellipse stroke="null" ry="75.999997" rx="75.500003" id="svg_3" cy="140.437497" cx="290.000003" stroke-width="1.5" fill="#d0d0d0"/>
+                <ellipse stroke="null" ry="51.999999" rx="116" id="svg_4" cy="286.437501" cx="290" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="#d0d0d0"/>
+                <path id="svg_12" d="m174.234012,286.723686l1.249877,71.493427l6.249426,4.999541l8.999174,5.749472l9.499128,4.999541l11.998898,5.749472l10.499036,4.499587l10.749013,3.499679l11.248967,3.249702l11.498944,2.249793l12.74883,1.999816l13.248784,0.749931l13.998715,0l14.248692,-0.749931l14.498669,-1.999816l14.248692,-3.249702l11.248967,-3.249702l13.748738,-5.249518l13.248784,-5.999449l12.498853,-6.999357l10.499036,-6.74938l5.999449,-4.499587l-0.249977,-71.493436" stroke-width="1.5" fill="#d0d0d0"/>
             </g>
         </svg>
         <form method="post" enctype="application/x-www-form-urlencoded">
@@ -149,5 +149,51 @@
             <input type="submit" value="Sign in" />
         </form>
     </div>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const log = (function () {
+                try {
+                    return console.log;
+                }
+                catch (e) {
+                    return function () {};
+                }
+            }());
+
+            var button = (function (list) {
+
+                for (var i = 0, l = list.length, t ; i < l ; i += 1 ) {
+
+                    t = list[i];
+
+                    if (t.getAttribute('type') === 'submit') {
+
+                        return t;
+                    }
+                }
+
+            }(document.getElementsByTagName('input')));
+
+            var sent = false;
+
+            document.getElementsByTagName('form')[0].addEventListener('submit', function (e) {
+
+                if (sent) {
+
+                    log('already sent');
+
+                    return e.preventDefault();
+                }
+
+                button.setAttribute('disabled', 'disabled');
+
+                log('submitting');
+
+                sent = true;
+            })
+        });
+    </script>
 </body>
 </html>

@@ -57,9 +57,12 @@ const middlewares = security({
     },
 });
 
-app.use(middlewares.secure);
-
+/**
+ * Always place signout endpoint before .secure if you want to avoid weird redirections
+ */
 app.all('/signout'  , middlewares.signout);
+
+app.use(middlewares.secure);
 
 app.all('/refresh'  , middlewares.refresh);
 
