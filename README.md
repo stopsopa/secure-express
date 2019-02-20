@@ -90,7 +90,7 @@ const server = app.listen(port, host, () => {
 
 # About architecture
 
-The core script is [securityabstract.js](lib/securityabstract.js), (I'm encoriging to see how things are implemented - it's quite simple) this script is responsible for creating authentication cookie after correct login, it doesn't impose any encryption method for cookie content.
+The core script is [securityabstract.js](lib/securityabstract.js), (I'm encoriging to see how things are implemented - it's quite simple, EDIT: was simple before I've added "remember me" functionality ;) ) this script is responsible for creating authentication cookie after correct login, it doesn't impose any encryption method for cookie content.
 
 Another script is [securityjwt.js](lib/securityjwt.js) which is extension of default configuration of securityabstract.js and it is focused on encrypting cookie using JWT.
 
