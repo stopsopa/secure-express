@@ -11,6 +11,11 @@
         * {
             font-family: 'Roboto', sans-serif;
         }
+        .login div.center {
+            text-align: center;
+            width: 100%;
+            padding: 0;
+        }
         svg {
             margin-left: auto;
             margin-right: auto;
@@ -80,17 +85,19 @@
         input[type="password"] {
             width: 100%;
             line-height: 20px;
-            border-radius: 2px;
+            /*border-radius: 2px;*/
             /*height: 28px;*/
             margin: 1px 1px 0 1px;
-            border: 1px solid #d2d2d2;
+            /*border: 1px solid #d2d2d2;*/
             padding: 12px 15px;
             font-size: 15px;
             box-sizing: border-box;
+            border: 0;
+            border-bottom: 2px solid #c7c7c7;
         }
         input[type="text"].error,
         input[type="password"].error {
-            border-color: #d50000;
+            /*border-color: #d50000;*/
             border-width: 2px;
         }
         input[type="submit"] {
@@ -106,14 +113,58 @@
             background-color: #afb0b1;
             color: white;
             box-shadow: 0 0 0 #afb0b1;
-            transition: box-shadow 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            /*transition: font-size 0.3s ease-in-out;*/
+            /*transition: width 0.3s ease-in-out;*/
+            /*transition: background-color 0.3s ease-in-out;*/
             cursor: pointer;
         }
-        label {
-
+        @-moz-keyframes spin {
+            from { -moz-transform: rotate(0deg); }
+            to { -moz-transform: rotate(360deg); }
+        }
+        @-webkit-keyframes spin {
+            from { -webkit-transform: rotate(0deg); }
+            to { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes spin {
+            from {transform:rotate(0deg);}
+            to {transform:rotate(360deg);}
+        }
+        input[type="submit"][class] {
+            outline: none;
+        }
+        input[type="submit"].start {
+            font-size: 0;
+            width: 44px;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            /*animation-timing-function: ease-in;*/
+        }
+        input[type="submit"].spining {
+            animation-name: spin;
+            animation-duration: 1000ms;
+            border-radius: 58px;
+            border: 0;
+            border-top: 2px solid #bdbdbd;
+            background-color: transparent;
+            cursor: auto;
         }
         input[type="submit"]:hover {
             box-shadow: 0 0 8px #bdbdbd;
+        }
+        input[type="submit"].spining:hover {
+            box-shadow: none;
+        }
+
+        /**
+         * https://stackoverflow.com/a/14205976/5560682
+         */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active  {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
         }
     </style>
 </head>
@@ -146,10 +197,35 @@
                 Remember me
             </label>
             <% } %>
-            <input type="submit" value="Sign in" />
+            <div class="center">
+                <input type="submit" value="Sign in" />
+            </div>
         </form>
     </div>
     <script>
+        function addClass(el, name) {
+            if (!hasClass(el, name)) { el.className += (el.className ? ' ' : '') +name; }
+
+            // inna implementacja, z symfony2 development toolbar
+            // if (!hasClass(el, klass)) {
+            // el.className += " " + klass;
+            // }
+
+        }
+        // http://www.avoid.org/javascript-addclassremoveclass-functions/
+        function hasClass(el, name) {
+            //return (new RegExp('(\\s|^)'+name+'(\\s|$)')).test(el.className);
+            if (el.classList)
+                el.classList.contains(name);
+            else
+                new RegExp('(\\s|^)'+name+'(\\s|$)').test(el.className);
+
+            // inna implementacja, z symfony2 development toolbar
+            // return el.className.match(new RegExp('\\b' + name + '\\b'));
+        }
+        function toggleClass(el, name) {
+            hasClass(el, name) ? removeClass(el, name) : addClass(el, name);
+        }
 
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -187,11 +263,20 @@
                     return e.preventDefault();
                 }
 
+                addClass(button, 'start');
+
+                setTimeout(function () {
+                    addClass(button, 'spining');
+                }, 300);
+
                 button.setAttribute('disabled', 'disabled');
 
                 log('submitting');
 
                 sent = true;
+
+                log('testing')
+                return e.preventDefault();
             })
         });
     </script>
