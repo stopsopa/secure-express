@@ -43,8 +43,6 @@
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             width: 400px;
-            /*background-color: #f9f9f9;*/
-            /*box-shadow: 0 2px 4px #c7c7c7;*/
             padding: 23px;
         }
         .login div {
@@ -85,10 +83,7 @@
         input[type="password"] {
             width: 100%;
             line-height: 20px;
-            /*border-radius: 2px;*/
-            /*height: 28px;*/
             margin: 1px 1px 0 1px;
-            /*border: 1px solid #d2d2d2;*/
             padding: 12px 15px;
             font-size: 15px;
             box-sizing: border-box;
@@ -97,7 +92,6 @@
         }
         input[type="text"].error,
         input[type="password"].error {
-            /*border-color: #d50000;*/
             border-width: 2px;
         }
         input[type="submit"] {
@@ -114,9 +108,6 @@
             color: white;
             box-shadow: 0 0 0 #afb0b1;
             transition: all 0.3s ease-in-out;
-            /*transition: font-size 0.3s ease-in-out;*/
-            /*transition: width 0.3s ease-in-out;*/
-            /*transition: background-color 0.3s ease-in-out;*/
             cursor: pointer;
         }
         @-moz-keyframes spin {
@@ -139,7 +130,6 @@
             width: 44px;
             animation-iteration-count: infinite;
             animation-timing-function: linear;
-            /*animation-timing-function: ease-in;*/
         }
         input[type="submit"].spining {
             animation-name: spin;
@@ -205,28 +195,16 @@
     <script>
         function addClass(el, name) {
             if (!hasClass(el, name)) { el.className += (el.className ? ' ' : '') +name; }
-
-            // inna implementacja, z symfony2 development toolbar
-            // if (!hasClass(el, klass)) {
-            // el.className += " " + klass;
-            // }
-
         }
-        // http://www.avoid.org/javascript-addclassremoveclass-functions/
         function hasClass(el, name) {
-            //return (new RegExp('(\\s|^)'+name+'(\\s|$)')).test(el.className);
             if (el.classList)
                 el.classList.contains(name);
             else
                 new RegExp('(\\s|^)'+name+'(\\s|$)').test(el.className);
-
-            // inna implementacja, z symfony2 development toolbar
-            // return el.className.match(new RegExp('\\b' + name + '\\b'));
         }
         function toggleClass(el, name) {
             hasClass(el, name) ? removeClass(el, name) : addClass(el, name);
         }
-
         document.addEventListener('DOMContentLoaded', function () {
 
             const log = (function () {
