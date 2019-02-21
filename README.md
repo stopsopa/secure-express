@@ -58,7 +58,7 @@ const middlewares = security({
 });
 
 /**
- * Always place signout endpoint before .secure if you want to avoid weird redirections
+ * Always place .signout endpoint before .secure if you want to avoid weird redirections
  */
 app.all('/signout'  , middlewares.signout);
 
