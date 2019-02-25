@@ -94,5 +94,5 @@ The core script is [securityabstract.js](lib/securityabstract.js), (I'm encorigi
 
 Another script is [securityjwt.js](lib/securityjwt.js) which is extension of default configuration of securityabstract.js and it is focused on encrypting cookie using JWT.
 
-It is possible to create another method of encryption of sesion cookie which is up to you. Cheers...
+If would like to create different method of encrypting session token just extend [securityabstract.js](lib/securityabstract.js) and use [securityjwt.js](lib/securityjwt.js) as an example how to do it.
 
